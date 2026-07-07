@@ -1,0 +1,883 @@
+<!DOCTYPE html>
+
+<html class="scroll-smooth" lang="en">
+    <head>
+        <title>Mansvi Sharma | Premium Web Development Portfolio</title>
+
+<link rel="icon" type="image/png" href="favicon.svg">
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Mansvi Sharma | Premium Web Development Portfolio</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        primary: "#3730A3", // Royal Indigo
+                        "primary-container": "#312E81", // Deep Indigo
+                        accent: "#F59E0B", // Warm Gold
+                        "accent-container": "#D97706",
+                        background: "#F5F3FF", // Light Lavender-tinted Gray
+                        surface: "#FFFFFF",
+                        "surface-variant": "#E0E7FF", // Lavender border/tint
+                        "surface-container-lowest": "#FFFFFF",
+                        "surface-container-low": "#EEF2FF",
+                        "surface-container": "#E0E7FF",
+                        "surface-container-high": "#C7D2FE",
+                        "on-surface": "#1E1B4B", // Very dark indigo for text
+                        "on-surface-variant": "#4338CA",
+                        "on-primary": "#FFFFFF",
+                        "on-primary-container": "#E0E7FF",
+                        secondary: "#4F46E5",
+                        "secondary-container": "#F5F3FF"
+                    },
+                    borderRadius: {
+                        DEFAULT: "0.25rem",
+                        lg: "0.5rem",
+                        xl: "0.75rem",
+                        full: "9999px"
+                    },
+                    spacing: {
+                        "container-max": "1200px",
+                        "section-padding-mobile": "64px",
+                        "section-padding": "120px",
+                        gutter: "24px",
+                        base: "8px"
+                    },
+                    fontFamily: {
+                        "headline-lg-mobile": ["Inter"],
+                        "headline-md": ["Inter"],
+                        "label-sm": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "headline-lg": ["Inter"],
+                        "body-md": ["Inter"],
+                        display: ["Inter"],
+                        headline: ["Inter"],
+                        body: ["Inter"],
+                        label: ["Inter"]
+                    },
+                    fontSize: {
+                        "headline-lg-mobile": ["32px", {lineHeight: "1.2", fontWeight: "600"}],
+                        "headline-md": ["24px", {lineHeight: "1.3", fontWeight: "600"}],
+                        "label-sm": ["14px", {lineHeight: "1", letterSpacing: "0.02em", fontWeight: "500"}],
+                        "body-lg": ["18px", {lineHeight: "1.6", fontWeight: "400"}],
+                        "headline-lg": ["40px", {lineHeight: "1.2", letterSpacing: "-0.01em", fontWeight: "600"}],
+                        "body-md": ["16px", {lineHeight: "1.6", fontWeight: "400"}],
+                        display: ["64px", {lineHeight: "1.1", letterSpacing: "-0.02em", fontWeight: "700"}]
+                    }
+                }
+            }
+        };
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(199, 210, 254, 0.5);
+        }
+        .scroll-reveal {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .scroll-reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .primary-gradient {
+            background: linear-gradient(135deg, #3730A3 0%, #4338CA 100%);
+        }
+
+        /* ===========================
+   Premium Animated Background
+=========================== */
+
+body{
+    position:relative;
+    overflow-x:hidden;
+}
+
+/* Moving Blobs */
+
+body::before,
+body::after{
+    content:"";
+    position:fixed;
+    width:500px;
+    height:500px;
+    border-radius:50%;
+    filter:blur(120px);
+    opacity:.08;
+    pointer-events:none;
+    z-index:-3;
+    animation:blobMove 18s ease-in-out infinite alternate;
+}
+
+body::before{
+    background:#4F46E5;
+    top:-150px;
+    left:-150px;
+}
+
+body::after{
+    background:#F59E0B;
+    bottom:-150px;
+    right:-150px;
+    animation-delay:6s;
+}
+
+/* Animated Grid */
+
+body::selection{
+    background:#4F46E533;
+}
+
+.grid-bg{
+    position:fixed;
+    inset:0;
+    z-index:-4;
+
+    background-image:
+        linear-gradient(rgba(79,70,229,.05) 1px,transparent 1px),
+        linear-gradient(90deg,rgba(79,70,229,.05) 1px,transparent 1px);
+
+    background-size:60px 60px;
+
+    animation:gridMove 18s linear infinite;
+}
+
+/* Mouse Glow */
+
+.mouse-glow{
+    position:fixed;
+
+    width:350px;
+    height:350px;
+
+    border-radius:50%;
+
+    background:radial-gradient(circle,
+        rgba(79,70,229,.15) 0%,
+        rgba(79,70,229,0) 70%);
+
+    pointer-events:none;
+
+    z-index:-2;
+
+    transform:translate(-50%,-50%);
+}
+
+/* Floating Animation */
+
+@keyframes blobMove{
+
+0%{
+transform:translate(0,0) scale(1);
+}
+
+50%{
+transform:translate(120px,80px) scale(1.15);
+}
+
+100%{
+transform:translate(-80px,120px) scale(.9);
+}
+
+}
+
+/* Grid Animation */
+
+@keyframes gridMove{
+
+from{
+background-position:0 0;
+}
+
+to{
+background-position:60px 60px;
+}
+
+}
+        
+    </style>
+</head>
+<body class="bg-background text-on-surface selection:bg-primary/20">
+    <div class="grid-bg"></div>
+
+<div class="mouse-glow"></div>
+<!-- TopNavBar -->
+<nav class="fixed top-0 w-full z-50 h-[72px] bg-white/80 backdrop-blur-md border-b border-surface-variant shadow-sm transition-all duration-300">
+<div class="max-w-[1200px] mx-auto px-gutter h-full flex items-center justify-between">
+<a class="font-headline-md text-headline-md font-bold text-primary hover:scale-105 transition-transform duration-200" href="#">Mansvi Sharma</a>
+<div class="hidden md:flex items-center gap-8 font-body-md text-body-md">
+<a class="text-on-surface-variant hover:text-primary transition-colors" href="#expertise">Expertise</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors" href="#services">Services</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors" href="#projects">Projects</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors" href="#process">Process</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors" href="#faq">FAQ</a>
+</div>
+<a class="bg-accent text-white px-6 py-2.5 rounded-full font-label-sm text-label-sm hover:bg-accent-container hover:scale-105 transition-all duration-200" href="#contact">Hire Me</a>
+</div>
+</nav>
+<!-- Hero Section -->
+<section class="relative pt-32 pb-section-padding px-gutter overflow-hidden bg-transparent">
+<div class="max-w-[1200px] mx-auto flex flex-col md:flex-row items-center gap-16 relative z-10">
+<div class="flex-1 text-left">
+<span class="inline-block px-4 py-1.5 rounded-full bg-secondary-container text-primary font-label-sm text-label-sm mb-6">Web Developer</span>
+<h1 class="font-display text-headline-lg-mobile md:text-display text-primary mb-6">
+                Helping Schools &amp; Businesses Build a Strong Digital Presence
+            </h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant mb-10 max-w-xl">
+                I build modern, responsive and SEO-friendly websites using WordPress, Django and modern web technologies.
+            </p>
+<div class="flex flex-wrap gap-4">
+    <a href="resume.pdf"
+download
+class="border border-primary text-primary px-8 py-4 rounded-xl font-semibold hover:bg-primary hover:text-white transition-all duration-300">
+Download Resume
+</a>
+<a class="bg-accent text-white px-8 py-4 rounded-xl font-label-sm text-label-sm hover:bg-accent-container hover:scale-105 transition-all shadow-lg" href="#projects">View My Work</a>
+<a class="bg-surface-container-high text-primary px-8 py-4 rounded-xl font-label-sm text-label-sm hover:scale-105 transition-all" href="#contact">Let's Discuss Your Project</a>
+</div>
+</div>
+<div class="flex-1 relative">
+<div class="relative w-full aspect-square rounded-[2rem] overflow-hidden shadow-2xl border-4 border-white">
+<div class="w-full h-full bg-cover bg-center" data-alt="A sophisticated, high-end 3D abstract visualization of a web development ecosystem. Glowing ethereal lines connect floating digital screens and geometric code blocks in a pristine, minimalist white space. The lighting is soft and cinematic, utilizing a deep blue and sky blue color palette to evoke professional reliability and technological precision." style="background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRONrcVPTj5uSg5T_Rtb_eL3OqSsffgPL2Y3f3b3NO6Gg&s=10')"></div>
+</div>
+<!-- Decorative elements -->
+<div class="absolute -top-10 -right-10 w-40 h-40 bg-primary/5 rounded-full blur-3xl"></div>
+<div class="absolute -bottom-10 -left-10 w-60 h-60 bg-accent/10 rounded-full blur-3xl"></div>
+</div>
+</div>
+</section>
+<!-- About Me -->
+<section class="py-section-padding px-gutter bg-surface" id="about">
+<div class="max-w-[1200px] mx-auto grid md:grid-cols-2 gap-20 items-center">
+<div class="order-2 md:order-1">
+<div class="relative rounded-2xl overflow-hidden shadow-xl aspect-[4/5] border border-surface-variant">
+<img class="w-full h-full object-cover" data-alt="A professional, minimalist headshot of a female agency founder with a confident expression. She is in a bright, modern office setting with glass partitions and soft natural light. The aesthetic is clean and high-end, emphasizing professionalism and leadership. The color story is dominated by soft grays and deep blues, reflecting an expert in digital architecture." src="https://media.licdn.com/dms/image/v2/D5603AQH4x0mAcatcZg/profile-displayphoto-crop_800_800/B56ZlH8fFII0AI-/0/1757848664691?e=1784764800&v=beta&t=mxGhjIRDYhva2RBvWfJULf7zqLbkKvxSgNh464oeE3s"/>
+</div>
+</div>
+<div class="order-1 md:order-2 scroll-reveal active">
+<h2 class="font-headline-lg text-headline-lg text-primary mb-8">Hi, I'm MANSVI SHARMA.</h2>
+<div class="space-y-6 font-body-md text-body-md text-on-surface-variant">
+
+<p>Currently completed Master of Computer Applications (MCA) at Rajasthan Technical University, Kota, while contributing as an Associate at Solskyy - Digital Solutions. Gained experience in <strong>Social Media Marketing, Graphic Designing, Blog Writing, On-Page SEO, WordPress Development, Database Management Systems, Microsoft Power BI, and DAX</strong>, with hands-on involvement in technical projects and analysis.  
+Previous roles include software development at Cognifyz Technologies, <strong>Quality Assurance</strong> at Briskcovey Technologies, and <strong>Python training</strong> at Rudra Mosaic. Passionate about learning and applying technical skills to build reliable and efficient solutions, with a focus on database management and data analysis.
+I am now focused on building my career in <strong>Software Development</strong>, with a particular interest in Backend Development, <strong>Python, Django, APIs, Database Management, and Data Analysis</strong>. I enjoy solving real-world problems through technology and continuously improving my technical skills to develop scalable, reliable, and efficient software solutions..</p>
+
+</div>
+<div class="mt-10 grid grid-cols-3 gap-4">
+<div class="p-4 bg-surface-container-low rounded-xl shadow-sm border border-surface-variant">
+<div class="text-accent font-bold text-2xl">100%</div>
+<div class="text-label-sm font-label-sm text-on-surface-variant">Commitment</div>
+</div>
+<div class="p-4 bg-surface-container-low rounded-xl shadow-sm border border-surface-variant">
+<div class="text-accent font-bold text-2xl">SEO</div>
+<div class="text-label-sm font-label-sm text-on-surface-variant">First Approach</div>
+</div>
+<div class="p-4 bg-surface-container-low rounded-xl shadow-sm border border-surface-variant">
+<div class="text-accent font-bold text-2xl">MCA</div>
+<div class="text-label-sm font-label-sm text-on-surface-variant">Education</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- My Expertise -->
+<section class="py-section-padding px-gutter bg-surface-container-low" id="expertise">
+<div class="max-w-[1200px] mx-auto">
+<div class="text-center mb-16">
+<h2 class="font-headline-lg text-headline-lg text-primary mb-4">Tech Stack &amp; Expertise</h2>
+<p class="font-body-md text-body-md text-on-surface-variant max-w-2xl mx-auto">A comprehensive set of tools and technologies I use to deliver high-end digital solutions.</p>
+</div>
+<div class="grid md:grid-cols-4 gap-6">
+<!-- Frontend -->
+<div class="p-8 bg-white rounded-xl shadow-sm hover:shadow-md transition-shadow border border-surface-variant">
+<div class="text-accent mb-6"><span class="material-symbols-outlined text-4xl">code</span></div>
+<h3 class="font-headline-md text-headline-md mb-4 text-primary">Frontend</h3>
+<ul class="space-y-3 font-body-md text-on-surface-variant">
+<li class="flex items-center gap-2"><span class="w-1.5 h-1.5 bg-accent rounded-full"></span> HTML5</li>
+<li class="flex items-center gap-2"><span class="w-1.5 h-1.5 bg-accent rounded-full"></span> CSS3</li>
+<li class="flex items-center gap-2"><span class="w-1.5 h-1.5 bg-accent rounded-full"></span> JavaScript / jQuery</li>
+<li class="flex items-center gap-2"><span class="w-1.5 h-1.5 bg-accent rounded-full"></span> Bootstrap &amp; Tailwind</li>
+</ul>
+</div>
+<!-- Backend -->
+<div class="p-8 bg-white rounded-xl shadow-sm hover:shadow-md transition-shadow border border-surface-variant">
+<div class="text-accent mb-6"><span class="material-symbols-outlined text-4xl">terminal</span></div>
+<h3 class="font-headline-md text-headline-md mb-4 text-primary">Backend</h3>
+<ul class="space-y-3 font-body-md text-on-surface-variant">
+<li class="flex items-center gap-2"><span class="w-1.5 h-1.5 bg-accent rounded-full"></span> Python</li>
+<li class="flex items-center gap-2"><span class="w-1.5 h-1.5 bg-accent rounded-full"></span> Django</li>
+<li class="flex items-center gap-2"><span class="w-1.5 h-1.5 bg-accent rounded-full"></span> REST Framework</li>
+<li class="flex items-center gap-2"><span class="w-1.5 h-1.5 bg-accent rounded-full"></span> PHP</li>
+</ul>
+</div>
+<!-- CMS -->
+<div class="p-8 bg-white rounded-xl shadow-sm hover:shadow-md transition-shadow border border-surface-variant">
+<div class="text-accent mb-6"><span class="material-symbols-outlined text-4xl">web_asset</span></div>
+<h3 class="font-headline-md text-headline-md mb-4 text-primary">CMS</h3>
+<ul class="space-y-3 font-body-md text-on-surface-variant">
+<li class="flex items-center gap-2"><span class="w-1.5 h-1.5 bg-accent rounded-full"></span> WordPress</li>
+<li class="flex items-center gap-2"><span class="w-1.5 h-1.5 bg-accent rounded-full"></span> Elementor</li>
+<li class="flex items-center gap-2"><span class="w-1.5 h-1.5 bg-accent rounded-full"></span> Custom CMS</li>
+<li class="flex items-center gap-2"><span class="w-1.5 h-1.5 bg-accent rounded-full"></span> Widgets</li>
+</ul>
+</div>
+<!-- Database & More -->
+<div class="p-8 bg-white rounded-xl shadow-sm hover:shadow-md transition-shadow border border-surface-variant">
+<div class="text-accent mb-6"><span class="material-symbols-outlined text-4xl">settings_suggest</span></div>
+<h3 class="font-headline-md text-headline-md mb-4 text-primary">Others</h3>
+<ul class="space-y-3 font-body-md text-on-surface-variant">
+<li class="flex items-center gap-2"><span class="w-1.5 h-1.5 bg-accent rounded-full"></span> MongoDB / PostgreSQL</li>
+<li class="flex items-center gap-2"><span class="w-1.5 h-1.5 bg-accent rounded-full"></span> Gen AI Tools</li>
+<li class="flex items-center gap-2"><span class="w-1.5 h-1.5 bg-accent rounded-full"></span> Basic SEO Optimization</li>
+<li class="flex items-center gap-2"><span class="w-1.5 h-1.5 bg-accent rounded-full"></span> Social Media Marketing &amp; Handling</li>
+</ul>
+</div>
+</div>
+</div>
+</section>
+<!-- Services -->
+<section class="py-section-padding px-gutter bg-surface-container-lowest" id="services">
+<div class="max-w-[1200px] mx-auto">
+<h2 class="font-headline-lg text-headline-lg text-primary mb-16 text-center">Tailored Solutions for Your Success</h2>
+<div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+<!-- Card 1 -->
+<div class="p-8 glass-card rounded-2xl hover:bg-surface-container-low hover:scale-[1.02] transition-all duration-300 group">
+<span class="material-symbols-outlined text-accent text-4xl mb-6 group-hover:scale-110 transition-transform">school</span>
+<h4 class="font-headline-md text-headline-md text-primary mb-4">School Website Dev</h4>
+<p class="font-body-md text-on-surface-variant">Integrated portals for student management, events, and academic showcases.</p>
+</div>
+<!-- Card 2 -->
+<div class="p-8 glass-card rounded-2xl hover:bg-surface-container-low hover:scale-[1.02] transition-all duration-300 group">
+<span class="material-symbols-outlined text-accent text-4xl mb-6 group-hover:scale-110 transition-transform">business</span>
+<h4 class="font-headline-md text-headline-md text-primary mb-4">Business Websites</h4>
+<p class="font-body-md text-on-surface-variant">Professional corporate identities designed to convert visitors into loyal clients.</p>
+</div>
+<!-- Card 3 -->
+<div class="p-8 glass-card rounded-2xl hover:bg-surface-container-low hover:scale-[1.02] transition-all duration-300 group">
+<span class="material-symbols-outlined text-accent text-4xl mb-6 group-hover:scale-110 transition-transform">auto_fix_high</span>
+<h4 class="font-headline-md text-headline-md text-primary mb-4">Website Redesign</h4>
+<p class="font-body-md text-on-surface-variant">Modernize your legacy site with fresh UI/UX and lightning-fast performance.</p>
+</div>
+<!-- Card 4 -->
+<div class="p-8 glass-card rounded-2xl hover:bg-surface-container-low hover:scale-[1.02] transition-all duration-300 group">
+<span class="material-symbols-outlined text-accent text-4xl mb-6 group-hover:scale-110 transition-transform">search</span>
+<h4 class="font-headline-md text-headline-md text-primary mb-4">Basic SEO</h4>
+<p class="font-body-md text-on-surface-variant">Data-driven optimization to rank better and stay visible in search results gradually.</p>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-4 gap-8 mt-8">
+<!-- Card 5 -->
+<div class="p-8 glass-card rounded-2xl hover:bg-surface-container-low hover:scale-[1.02] transition-all duration-300 group">
+<span class="material-symbols-outlined text-accent text-4xl mb-6 group-hover:scale-110 transition-transform">rocket_launch</span>
+<h4 class="font-headline-md text-headline-md text-primary mb-4">Landing Pages</h4>
+<p class="font-body-md text-on-surface-variant">High-conversion single-page sites built specifically for your ad campaigns.</p>
+</div>
+<!-- Card 6 -->
+<div class="p-8 glass-card rounded-2xl hover:bg-surface-container-low hover:scale-[1.02] transition-all duration-300 group">
+<span class="material-symbols-outlined text-accent text-4xl mb-6 group-hover:scale-110 transition-transform">compress</span>
+<h4 class="font-headline-md text-headline-md text-primary mb-4">WordPress Experts</h4>
+<p class="font-body-md text-on-surface-variant">Custom themes and plugins optimized for security and management ease.</p>
+</div>
+<!-- Card 7 -->
+<div class="p-8 glass-card rounded-2xl hover:bg-surface-container-low hover:scale-[1.02] transition-all duration-300 group">
+<span class="material-symbols-outlined text-accent text-4xl mb-6 group-hover:scale-110 transition-transform">api</span>
+<h4 class="font-headline-md text-headline-md text-primary mb-4">Django / Python</h4>
+<p class="font-body-md text-on-surface-variant">Robust, scalable backend systems and secure API developments.</p>
+</div>
+<!-- Card 8 -->
+<div class="p-8 glass-card rounded-2xl hover:bg-surface-container-low hover:scale-[1.02] transition-all duration-300 group">
+<span class="material-symbols-outlined text-accent text-4xl mb-6 group-hover:scale-110 transition-transform">support_agent</span>
+<h4 class="font-headline-md text-headline-md text-primary mb-4">Maintenance</h4>
+<p class="font-body-md text-on-surface-variant">Peace of mind with 24/7 monitoring, updates, and technical support.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Featured Projects -->
+<section class="py-section-padding px-gutter bg-surface" id="projects">
+<div class="max-w-[1200px] mx-auto">
+<h2 class="font-headline-lg text-headline-lg text-primary mb-16">My Projects</h2>
+<div class="grid md:grid-cols-2 gap-12">
+<!-- Goldy Enterprises -->
+<div class="group scroll-reveal active">
+<div class="relative aspect-[16/9] rounded-2xl overflow-hidden mb-6 border border-surface-variant shadow-lg">
+<a href="https://goldyenterprises.in/"><img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="A premium corporate website showcase for Goldy Enterprises. The design is displayed on a sleek laptop screen, featuring a sophisticated blue and gold color scheme with crisp typography and professional imagery of industrial excellence. The background is a clean, minimalist studio setting with soft depth-of-field effects." src="https://goldyenterprises.in/wp-content/uploads/2026/06/Untitled-design-31.png"/></a>
+<div class="absolute top-4 right-4 bg-accent text-white px-4 py-1 rounded-full text-label-sm font-label-sm shadow-md">Live Site</div>
+</div>
+<h3 class="font-headline-md text-headline-md text-primary mb-2"><a href="https://goldyenterprises.in/">Goldy Enterprises</a></h3>
+<p class="text-on-surface-variant mb-4">Corporate identity and product showcase for an industry leader.</p>
+<div class="flex gap-3">
+
+<span class="px-3 py-1 bg-surface-container-high text-primary rounded-full text-xs font-medium">WordPress</span>
+<span class="px-3 py-1 bg-surface-container-high text-primary rounded-full text-xs font-medium">SEO</span>
+<span class="px-3 py-1 bg-surface-container-high text-primary rounded-full text-xs font-medium">Corporate UI</span>
+</div>
+<div class="mt-6 flex gap-4">
+
+    <a href="https://goldyenterprises.in/"
+       target="_blank"
+       class="bg-primary text-white px-5 py-2 rounded-lg hover:bg-primary-container transition">
+
+        Visit Website
+
+    </a>
+
+    <a href="#contact"
+       class="border border-primary text-primary px-5 py-2 rounded-lg hover:bg-primary hover:text-white transition">
+
+        Request Similar Website
+
+    </a>
+
+</div>
+</div>
+<!-- Polestar School -->
+<div class="group scroll-reveal active" style="transition-delay: 100ms;">
+<div class="relative aspect-[16/9] rounded-2xl overflow-hidden mb-6 border border-surface-variant shadow-lg">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="A modern educational institution website mockup for Polestar The School. The UI is bright, friendly, and intuitive, featuring vibrant blues and whites. It shows school life imagery, academic calendars, and parent portals on a tablet device. The overall vibe is inspiring, clean, and highly professional." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBf0bfYMLrC3cThhHbaiNb0j4UZ1DemQmmoNlJ50-0MyVNnVOErRCu8EQowvSS0D2a14Bgbms9eEUwsLLR0ccZogi1ZBXchcIdYqt6nezxsVVoWCzMk9CeIYsF29aD0-TcRmn6kznP7b8AFISQiNqKdtNHggPF0SfrXnNT0LLNbPdQCTuDZmmcgfrxlSYqH_nvkC2wEJ-SNwg7BFYUGgrvujJjZBlfROC_SC0ApEw3oDdtUkuwOWJ_Fx3jY72RcTZklE-opkRTt0iw"/>
+<div class="absolute top-4 right-4 bg-primary text-white px-4 py-1 rounded-full text-label-sm font-label-sm shadow-md">Under Development</div>
+</div>
+<h3 class="font-headline-md text-headline-md text-primary mb-2">Polestar The School</h3>
+<p class="text-on-surface-variant mb-4">Interactive portal for a modern educational institution.</p>
+<div class="flex gap-3">
+<span class="px-3 py-1 bg-surface-container-high text-primary rounded-full text-xs font-medium">WordPress</span>
+<span class="px-3 py-1 bg-surface-container-high text-primary rounded-full text-xs font-medium">Student CMS</span>
+<span class="px-3 py-1 bg-surface-container-high text-primary rounded-full text-xs font-medium">Responsive</span>
+</div>
+<div class="mt-6 flex gap-4">
+
+    <button
+        class="bg-gray-400 text-white px-5 py-2 rounded-lg cursor-not-allowed">
+
+        Coming Soon
+
+    </button>
+
+    <a href="#contact"
+       class="border border-primary text-primary px-5 py-2 rounded-lg hover:bg-primary hover:text-white transition">
+
+        Book Similar Project
+
+    </a>
+
+</div>
+</div>
+</div>
+<!-- Future Projects Placeholder -->
+<div class="mt-20 p-12 rounded-3xl border-2 border-dashed border-primary/20 text-center scroll-reveal active bg-surface-container-low">
+<span class="material-symbols-outlined text-5xl text-accent mb-4">school</span>
+<h4 class="font-headline-md text-primary mb-2">More Educational Projects Coming Soon</h4>
+<p class="text-on-surface-variant">We are currently working with three new institutions to launch their digital portals.</p>
+</div>
+</div>
+</section>
+<!-- Why Choose Me -->
+<section class="py-section-padding px-gutter bg-primary-container text-white">
+<div class="max-w-[1200px] mx-auto">
+<h2 class="font-headline-lg text-headline-lg mb-16 text-center text-accent">The Quality Guarantee</h2>
+<div class="grid grid-cols-2 md:grid-cols-4 gap-8">
+<div class="p-6 bg-white/5 rounded-2xl backdrop-blur-sm border border-white/10 hover:bg-white/10 transition-colors">
+<span class="material-symbols-outlined text-4xl mb-4 text-accent">code</span>
+<h5 class="font-bold mb-2">Clean Code</h5>
+<p class="text-sm opacity-80">Maintainable, efficient, and well-documented codebase.</p>
+</div>
+<div class="p-6 bg-white/5 rounded-2xl backdrop-blur-sm border border-white/10 hover:bg-white/10 transition-colors">
+<span class="material-symbols-outlined text-4xl mb-4 text-accent">devices</span>
+<h5 class="font-bold mb-2">Responsive</h5>
+<p class="text-sm opacity-80">Flawless experience across mobile, tablet, and desktop.</p>
+</div>
+<div class="p-6 bg-white/5 rounded-2xl backdrop-blur-sm border border-white/10 hover:bg-white/10 transition-colors">
+<span class="material-symbols-outlined text-4xl mb-4 text-accent">trending_up</span>
+<h5 class="font-bold mb-2">SEO Friendly</h5>
+<p class="text-sm opacity-80">Optimized structure for maximum search visibility.</p>
+</div>
+<div class="p-6 bg-white/5 rounded-2xl backdrop-blur-sm border border-white/10 hover:bg-white/10 transition-colors">
+<span class="material-symbols-outlined text-4xl mb-4 text-accent">bolt</span>
+<h5 class="font-bold mb-2">Fast Loading</h5>
+<p class="text-sm opacity-80">Sub-second load times for better user retention.</p>
+</div>
+<div class="p-6 bg-white/5 rounded-2xl backdrop-blur-sm border border-white/10 hover:bg-white/10 transition-colors">
+<span class="material-symbols-outlined text-4xl mb-4 text-accent">palette</span>
+<h5 class="font-bold mb-2">Prof UI</h5>
+<p class="text-sm opacity-80">Modern, Apple-inspired aesthetics for brand trust.</p>
+</div>
+<div class="p-6 bg-white/5 rounded-2xl backdrop-blur-sm border border-white/10 hover:bg-white/10 transition-colors">
+<span class="material-symbols-outlined text-4xl mb-4 text-accent">headset_mic</span>
+<h5 class="font-bold mb-2">Support</h5>
+<p class="text-sm opacity-80">Ongoing technical help and regular maintenance.</p>
+</div>
+<div class="p-6 bg-white/5 rounded-2xl backdrop-blur-sm border border-white/10 hover:bg-white/10 transition-colors">
+<span class="material-symbols-outlined text-4xl mb-4 text-accent">chat</span>
+<h5 class="font-bold mb-2">Communication</h5>
+<p class="text-sm opacity-80">Clear updates and transparent project management.</p>
+</div>
+<div class="p-6 bg-white/5 rounded-2xl backdrop-blur-sm border border-white/10 hover:bg-white/10 transition-colors">
+<span class="material-symbols-outlined text-4xl mb-4 text-accent">architecture</span>
+<h5 class="font-bold mb-2">Detail-Oriented</h5>
+<p class="text-sm opacity-80">Every pixel and function serves a specific purpose.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- My Process -->
+<section class="py-section-padding px-gutter bg-surface" id="process">
+<div class="max-w-[1200px] mx-auto">
+<h2 class="font-headline-lg text-headline-lg text-primary mb-16 text-center">Development Journey</h2>
+<div class="relative">
+<!-- Line -->
+<div class="absolute top-1/2 left-0 w-full h-0.5 bg-surface-variant -translate-y-1/2 hidden md:block"></div>
+<div class="grid md:grid-cols-7 gap-4 relative z-10">
+<!-- Step 1 -->
+<div class="text-center group">
+<div class="w-12 h-12 bg-white border-4 border-accent rounded-full mx-auto mb-4 flex items-center justify-center text-primary font-bold group-hover:scale-110 transition-transform shadow-sm">1</div>
+<h6 class="font-bold text-sm mb-1 text-primary">Discovery</h6>
+<p class="text-xs text-on-surface-variant">Requirement Gathering</p>
+</div>
+<!-- Step 2 -->
+<div class="text-center group">
+<div class="w-12 h-12 bg-white border-4 border-accent rounded-full mx-auto mb-4 flex items-center justify-center text-primary font-bold group-hover:scale-110 transition-transform shadow-sm">2</div>
+<h6 class="font-bold text-sm mb-1 text-primary">Planning</h6>
+<p class="text-xs text-on-surface-variant">Sitemap &amp; Strategy</p>
+</div>
+<!-- Step 3 -->
+<div class="text-center group">
+<div class="w-12 h-12 bg-white border-4 border-accent rounded-full mx-auto mb-4 flex items-center justify-center text-primary font-bold group-hover:scale-110 transition-transform shadow-sm">3</div>
+<h6 class="font-bold text-sm mb-1 text-primary">UI Design</h6>
+<p class="text-xs text-on-surface-variant">Visual Mockups</p>
+</div>
+<!-- Step 4 -->
+<div class="text-center group">
+<div class="w-12 h-12 bg-white border-4 border-accent rounded-full mx-auto mb-4 flex items-center justify-center text-primary font-bold group-hover:scale-110 transition-transform shadow-sm">4</div>
+<h6 class="font-bold text-sm mb-1 text-primary">Development</h6>
+<p class="text-xs text-on-surface-variant">Coding the Vision</p>
+</div>
+<!-- Step 5 -->
+<div class="text-center group">
+<div class="w-12 h-12 bg-white border-4 border-accent rounded-full mx-auto mb-4 flex items-center justify-center text-primary font-bold group-hover:scale-110 transition-transform shadow-sm">5</div>
+<h6 class="font-bold text-sm mb-1 text-primary">Testing</h6>
+<p class="text-xs text-on-surface-variant">QA &amp; Performance</p>
+</div>
+<!-- Step 6 -->
+<div class="text-center group">
+<div class="w-12 h-12 bg-white border-4 border-accent rounded-full mx-auto mb-4 flex items-center justify-center text-primary font-bold group-hover:scale-110 transition-transform shadow-sm">6</div>
+<h6 class="font-bold text-sm mb-1 text-primary">Deployment</h6>
+<p class="text-xs text-on-surface-variant">Going Live</p>
+</div>
+<!-- Step 7 -->
+<div class="text-center group">
+<div class="w-12 h-12 bg-white border-4 border-accent rounded-full mx-auto mb-4 flex items-center justify-center text-primary font-bold group-hover:scale-110 transition-transform shadow-sm">7</div>
+<h6 class="font-bold text-sm mb-1 text-primary">Support</h6>
+<p class="text-xs text-on-surface-variant">Long-term Care</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Testimonials Placeholder -->
+<section class="py-section-padding px-gutter bg-surface-container-low overflow-hidden">
+<div class="max-w-[1200px] mx-auto text-center">
+<h2 class="font-headline-lg text-headline-lg text-primary mb-8">What Clients Say</h2>
+<div class="p-16 glass-card rounded-[3rem] border-2 border-primary/10">
+<span class="material-symbols-outlined text-6xl text-accent/20 mb-4" style="font-variation-settings: 'FILL' 1;">format_quote</span>
+<p class="font-headline-md italic text-on-surface-variant mb-6">"Our digital presence is currently being transformed. Real results and testimonials will be added shortly."</p>
+<div class="flex justify-center gap-1">
+<span class="material-symbols-outlined text-accent" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-accent" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-accent" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-accent" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-accent" style="font-variation-settings: 'FILL' 1;">star</span>
+</div>
+<p class="mt-4 font-label-sm text-on-surface-variant">Client testimonials will be added soon.</p>
+</div>
+</div>
+</section>
+<!-- FAQ -->
+<section class="py-section-padding px-gutter bg-surface" id="faq">
+<div class="max-w-[800px] mx-auto">
+<h2 class="font-headline-lg text-headline-lg text-primary mb-12 text-center">Frequently Asked Questions</h2>
+<div class="space-y-4">
+<!-- FAQ Item 1 -->
+<div class="border border-surface-variant rounded-xl overflow-hidden shadow-sm">
+<button class="w-full p-6 text-left flex justify-between items-center bg-white hover:bg-surface-container-low transition-colors" onclick="toggleFaq(this)">
+<span class="font-bold text-primary">How long does it take to build a school website?</span>
+<span class="material-symbols-outlined text-accent">expand_more</span>
+</button>
+<div class="hidden p-6 bg-surface-container-lowest text-on-surface-variant border-t border-surface-variant">
+                    Typically, a comprehensive school website takes 4 to 8 weeks depending on the complexity of student portals and management integrations.
+                </div>
+</div>
+<!-- FAQ Item 2 -->
+<div class="border border-surface-variant rounded-xl overflow-hidden shadow-sm">
+<button class="w-full p-6 text-left flex justify-between items-center bg-white hover:bg-surface-container-low transition-colors" onclick="toggleFaq(this)">
+<span class="font-bold text-primary">Can you redesign our existing business website?</span>
+<span class="material-symbols-outlined text-accent">expand_more</span>
+</button>
+<div class="hidden p-6 bg-surface-container-lowest text-on-surface-variant border-t border-surface-variant">
+                    Yes, I specialize in revitalizing legacy sites by migrating content to modern platforms while improving speed, SEO, and visual appeal.
+                </div>
+</div>
+<!-- FAQ Item 3 -->
+<div class="border border-surface-variant rounded-xl overflow-hidden shadow-sm">
+<button class="w-full p-6 text-left flex justify-between items-center bg-white hover:bg-surface-container-low transition-colors" onclick="toggleFaq(this)">
+<span class="font-bold text-primary">Is SEO included in the development package?</span>
+<span class="material-symbols-outlined text-accent">expand_more</span>
+</button>
+<div class="hidden p-6 bg-surface-container-lowest text-on-surface-variant border-t border-surface-variant">
+                    Basic on-page SEO (meta tags, site structure, alt text) is included in every project. Advanced monthly SEO services are available as a separate plan.
+                </div>
+</div>
+<!-- FAQ Item 4 -->
+<div class="border border-surface-variant rounded-xl overflow-hidden shadow-sm">
+<button class="w-full p-6 text-left flex justify-between items-center bg-white hover:bg-surface-container-low transition-colors" onclick="toggleFaq(this)">
+<span class="font-bold text-primary">What kind of support do you provide after launch?</span>
+<span class="material-symbols-outlined text-accent">expand_more</span>
+</button>
+<div class="hidden p-6 bg-surface-container-lowest text-on-surface-variant border-t border-surface-variant">
+                    I offer monthly maintenance packages that cover security updates, content changes, hosting management, and performance monitoring.
+                </div>
+</div>
+</div>
+</div>
+</section>
+<!-- Contact -->
+<section class="py-section-padding px-gutter bg-surface-container-low" id="contact">
+<div class="max-w-[1200px] mx-auto grid md:grid-cols-2 gap-16">
+<div>
+<h2 class="font-headline-lg text-headline-lg text-primary mb-6">Let's Build Something Exceptional</h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant mb-10">Whether you're starting from scratch or scaling an existing platform, I'm here to help you navigate the digital landscape.</p>
+<div class="space-y-6 mb-10">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-accent">mail</span>
+</div>
+<div>
+<p class="text-sm text-on-surface-variant">Email Me</p>
+<a href="mailto:mansvisharma1251@gmail.com"
+class="font-bold text-primary hover:text-accent transition">
+
+mansvisharma1251@gmail.com
+
+</a>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-accent">location_on</span>
+</div>
+<div>
+<p class="text-sm text-on-surface-variant">Based in</p>
+<p class="font-bold text-primary">Jaipur, Rajasthan, India</p>
+</div>
+</div>
+</div>
+<div class="flex gap-4">
+
+    <!-- LinkedIn -->
+    <a href="https://www.linkedin.com/in/mansvi-sharma-44b690279/"
+       target="_blank"
+       class="w-12 h-12 rounded-full bg-white shadow-sm flex items-center justify-center text-primary hover:bg-primary hover:text-white transition-all border border-surface-variant">
+
+        <span class="material-symbols-outlined">work</span>
+
+    </a>
+
+    <!-- GitHub -->
+    <a href="https://github.com/MansviSharma25"
+       target="_blank"
+       class="w-12 h-12 rounded-full bg-white shadow-sm flex items-center justify-center text-primary hover:bg-primary hover:text-white transition-all border border-surface-variant">
+
+        <span class="material-symbols-outlined">code</span>
+
+    </a>
+
+    <!-- Instagram -->
+    <a href="https://instagram.com/"
+       target="_blank"
+       class="w-12 h-12 rounded-full bg-white shadow-sm flex items-center justify-center text-primary hover:bg-primary hover:text-white transition-all border border-surface-variant">
+
+        <span class="material-symbols-outlined">photo_camera</span>
+
+    </a>
+
+</div>
+</div>
+<div class="bg-white p-10 rounded-[2.5rem] shadow-xl border border-surface-variant">
+<form
+action="https://formsubmit.co/mansvisharma1251@gmail.com"
+method="POST"
+class="space-y-6">
+
+    <!-- Hidden Settings -->
+    <input type="hidden" name="_captcha" value="false">
+    <input type="hidden" name="_subject" value="New Portfolio Enquiry">
+    <input type="hidden" name="_template" value="table">
+
+    <div class="grid grid-cols-2 gap-6">
+
+        <div>
+            <label class="block text-label-sm font-label-sm text-on-surface-variant mb-2">
+                Full Name
+            </label>
+
+            <input
+                type="text"
+                name="Full Name"
+                placeholder="John Doe"
+                required
+                class="w-full px-4 py-3 rounded-xl bg-background border-none focus:ring-2 focus:ring-accent/40 transition-all text-on-surface">
+        </div>
+
+        <div>
+            <label class="block text-label-sm font-label-sm text-on-surface-variant mb-2">
+                Email Address
+            </label>
+
+            <input
+                type="email"
+                name="Email"
+                placeholder="john@example.com"
+                required
+                class="w-full px-4 py-3 rounded-xl bg-background border-none focus:ring-2 focus:ring-accent/40 transition-all text-on-surface">
+        </div>
+
+    </div>
+
+    <div>
+
+        <label class="block text-label-sm font-label-sm text-on-surface-variant mb-2">
+            Phone Number
+        </label>
+
+        <input
+            type="tel"
+            name="Phone Number"
+            placeholder="+91 98765 43210"
+            required
+            class="w-full px-4 py-3 rounded-xl bg-background border-none focus:ring-2 focus:ring-accent/40 transition-all text-on-surface">
+
+    </div>
+
+    <div>
+
+        <label class="block text-label-sm font-label-sm text-on-surface-variant mb-2">
+            Project Type
+        </label>
+
+        <select
+            name="Project Type"
+            required
+            class="w-full px-4 py-3 rounded-xl bg-background border-none focus:ring-2 focus:ring-accent/40">
+
+            <option value="">Select Project</option>
+            <option>School Website</option>
+            <option>Business Website</option>
+            <option>Portfolio Website</option>
+            <option>WordPress Website</option>
+            <option>Website Redesign</option>
+            <option>Other</option>
+
+        </select>
+
+    </div>
+
+    <div>
+
+        <label class="block text-label-sm font-label-sm text-on-surface-variant mb-2">
+            Project Details
+        </label>
+
+        <textarea
+            name="Project Details"
+            rows="5"
+            placeholder="Tell me about your project..."
+            required
+            class="w-full px-4 py-3 rounded-xl bg-background border-none focus:ring-2 focus:ring-accent/40 transition-all text-on-surface"></textarea>
+
+    </div>
+
+    <button
+        type="submit"
+        class="w-full bg-accent text-white py-4 rounded-xl font-bold hover:bg-accent-container transition-all shadow-lg hover:scale-[1.01]">
+
+        Send Project Proposal
+
+    </button>
+
+</form>
+</div>
+</div>
+</section>
+<!-- Footer -->
+<footer class="w-full py-section-padding bg-surface-container-lowest border-t border-surface-variant">
+<div class="max-w-[1200px] mx-auto px-gutter flex flex-col md:flex-row justify-between items-center gap-base">
+<div>
+<a class="font-headline-md text-headline-md font-bold text-primary" href="#">Mansvi Sharma</a>
+<p class="text-on-surface-variant mt-2">© 2026 Mansvi Sharma. All rights reserved.</p>
+</div>
+<div class="flex gap-8 text-on-surface-variant font-body-md">
+<a class="hover:text-accent transition-colors" href="https://www.linkedin.com/in/mansvi-sharma-44b690279/">LinkedIn</a>
+<a class="hover:text-accent transition-colors" href="https://github.com/MansviSharma25">GitHub</a>
+</div>
+</div>
+</footer>
+<script>
+    // Scroll Reveal Animation
+    function reveal() {
+        var reveals = document.querySelectorAll(".scroll-reveal");
+        for (var i = 0; i < reveals.length; i++) {
+            var windowHeight = window.innerHeight;
+            var elementTop = reveals[i].getBoundingClientRect().top;
+            var elementVisible = 150;
+            if (elementTop < windowHeight - elementVisible) {
+                reveals[i].classList.add("active");
+            }
+        }
+    }
+    window.addEventListener("scroll", reveal);
+    reveal(); // Trigger on load
+
+    // FAQ Toggle
+    function toggleFaq(btn) {
+        const content = btn.nextElementSibling;
+        const icon = btn.querySelector('.material-symbols-outlined');
+        content.classList.toggle('hidden');
+        icon.style.transform = content.classList.contains('hidden') ? 'rotate(0deg)' : 'rotate(180deg)';
+    }
+
+    // Navbar Shadow on Scroll
+    window.addEventListener('scroll', () => {
+        const nav = document.querySelector('nav');
+        if (window.scrollY > 20) {
+            nav.classList.add('shadow-lg', 'py-1');
+            nav.classList.remove('shadow-sm');
+        } else {
+            nav.classList.remove('shadow-lg', 'py-1');
+            nav.classList.add('shadow-sm');
+        }
+    });
+    /* Mouse Glow */
+
+const glow = document.querySelector(".mouse-glow");
+
+document.addEventListener("mousemove",(e)=>{
+
+glow.style.left=e.clientX+"px";
+
+glow.style.top=e.clientY+"px";
+
+});
+
+</script>
+</body></html>
